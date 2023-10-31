@@ -2,7 +2,6 @@ import { Suspense, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import LeftSide from "components/Auth/LeftSide";
-import Auth from "components/Auth";
 import SignIn from "../components/Auth/SignIn";
 import useApp from "hooks/useApp";
 import { RefreshTokenInput } from "types/refreshToken";
@@ -10,6 +9,8 @@ import { useRefreshToken } from "framework/auth/refreshToken";
 import { useAuth } from "contexts/AuthContext";
 import { Screens } from "enums/screens";
 import { Pages } from "enums/pages";
+import PasswordReset from "components/Auth/PasswordReset";
+import StepAuthentication from "components/Auth/StepAuthentication";
 
 type IState = { initialized: boolean };
 const INITIAL_STATE: IState = { initialized: false };
@@ -66,7 +67,9 @@ const AuthIndex: React.FC = () => {
             <Suspense fallback={null}>
               <Routes>
                 <Route path="/" element={<SignIn />} />
-                <Route path=":slug/*" element={<Auth />} />
+                <Route path="/password-reset" element={<PasswordReset />} />
+                <Route path="/verify-email" element={<StepAuthentication />} />
+                <Route path="*" element={<SignIn />} />
               </Routes>
             </Suspense>
           </div>
