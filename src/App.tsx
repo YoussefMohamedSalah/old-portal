@@ -15,18 +15,18 @@ const App: React.FC = () => {
         <div id="mytask-layout" className="theme-indigo">
           <Routes>
             <Route
-              path="/*"
+              path="/dashboard/*"
               element={
                 <Suspense fallback={null}>
-                  <AuthIndex />
+                  <MainIndex />
                 </Suspense>
               }
             />
             <Route
-              path="dashboard/*"
+              path="/*"
               element={
                 <Suspense fallback={null}>
-                  <MainIndex />
+                  <AuthIndex />
                 </Suspense>
               }
             />
